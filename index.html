@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="icones/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icones/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="theme-color" content="#2747D6">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -39,6 +43,7 @@ a{color:var(--accent)}
 
 header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .brand{font-family:var(--f-mono);font-weight:600;font-size:15px;display:flex;gap:8px;align-items:center}
+.brand .logo{width:28px;height:28px;flex:none}
 .brand b{display:inline-block;width:10px;height:18px;background:var(--accent);animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.brand b{animation:none}}
@@ -137,7 +142,18 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <div class="wrap">
   <header class="top">
-    <div class="brand"><span>deploy-book</span><b aria-hidden="true"></b></div>
+    <div class="brand"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#2747D6"/>
+  <rect x="11" y="13" width="12" height="38" rx="2" fill="#FFFFFF"/>
+  <rect x="11" y="19" width="12" height="3" fill="#2747D6"/>
+  <rect x="11" y="42" width="12" height="3" fill="#2747D6"/>
+  <rect x="25" y="20" width="11" height="31" rx="2" fill="#F2B13C"/>
+  <rect x="25" y="25" width="11" height="3" fill="#2747D6" opacity=".55"/>
+  <g transform="rotate(16 38 51)">
+    <rect x="38" y="15" width="11" height="36" rx="2" fill="#FFFFFF"/>
+    <rect x="38" y="21" width="11" height="3" fill="#2747D6"/>
+  </g>
+</svg><span>deploy-book</span><b aria-hidden="true"></b></div>
 
   </header>
 

@@ -172,6 +172,8 @@ async function gerarCapas(lista) {
   fs.mkdirSync(SITE, { recursive: true });
   fs.copyFileSync(path.join(RAIZ, "index.html"), path.join(SITE, "index.html"));
   if (fs.existsSync(PASTA)) fs.cpSync(PASTA, path.join(SITE, "livros"), { recursive: true });
+  const ICONES = path.join(RAIZ, "icones");
+  if (fs.existsSync(ICONES)) fs.cpSync(ICONES, path.join(SITE, "icones"), { recursive: true });
   const todos = [...automaticos, ...itens];
   let feitas = 0;
   try { feitas = await gerarCapas(todos); }
