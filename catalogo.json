@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-10-06",
+  "atualizado": "2026-10-08",
   "itens": [
     {
       "id": "pro-git",
@@ -10,7 +10,11 @@
       "licenca": "CC BY-NC-SA 3.0",
       "descricao": "Do primeiro commit a branches, rebase e fluxos de trabalho em equipe. Tem tradução oficial em português.",
       "fonte": "https://git-scm.com/book/pt-br/v2",
-      "formatos": ["pdf", "epub", "html"],
+      "formatos": [
+        "pdf",
+        "epub",
+        "html"
+      ],
       "arquivos": []
     },
     {
@@ -22,7 +26,9 @@
       "licenca": "CC BY-NC-ND 4.0",
       "descricao": "Como o Google opera sistemas em produção: SLOs, monitoramento, incidentes e postmortems.",
       "fonte": "https://sre.google/sre-book/table-of-contents/",
-      "formatos": ["html"],
+      "formatos": [
+        "html"
+      ],
       "arquivos": []
     },
     {
@@ -34,7 +40,10 @@
       "licenca": "CC BY-NC 3.0",
       "descricao": "Introdução à programação com Python, pensada para quem nunca programou.",
       "fonte": "https://greenteapress.com/wp/think-python-2e/",
-      "formatos": ["pdf", "html"],
+      "formatos": [
+        "pdf",
+        "html"
+      ],
       "arquivos": []
     },
     {
@@ -46,7 +55,11 @@
       "licenca": "CC BY-NC 3.0",
       "descricao": "JavaScript moderno com exercícios interativos, do básico a Node.js.",
       "fonte": "https://eloquentjavascript.net/",
-      "formatos": ["pdf", "epub", "html"],
+      "formatos": [
+        "pdf",
+        "epub",
+        "html"
+      ],
       "arquivos": []
     },
     {
@@ -58,7 +71,9 @@
       "licenca": "CC BY-NC-ND 3.0",
       "descricao": "Terminal, shell, permissões, processos e scripts em Bash.",
       "fonte": "https://linuxcommand.org/tlcl.php",
-      "formatos": ["pdf"],
+      "formatos": [
+        "pdf"
+      ],
       "arquivos": []
     },
     {
@@ -70,7 +85,9 @@
       "licenca": "Gratuito online (autores)",
       "descricao": "Virtualização, concorrência e persistência, capítulo por capítulo em PDF.",
       "fonte": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
-      "formatos": ["pdf"],
+      "formatos": [
+        "pdf"
+      ],
       "arquivos": []
     },
     {
@@ -82,7 +99,9 @@
       "licenca": "CC BY 4.0",
       "descricao": "Redes de computadores do enlace à aplicação, com foco em como os sistemas reais funcionam.",
       "fonte": "https://book.systemsapproach.org/",
-      "formatos": ["html"],
+      "formatos": [
+        "html"
+      ],
       "arquivos": []
     },
     {
@@ -94,7 +113,10 @@
       "licenca": "CC BY-SA 4.0",
       "descricao": "Deep learning com teoria, código executável e notebooks.",
       "fonte": "https://d2l.ai/",
-      "formatos": ["pdf", "html"],
+      "formatos": [
+        "pdf",
+        "html"
+      ],
       "arquivos": []
     }
   ]

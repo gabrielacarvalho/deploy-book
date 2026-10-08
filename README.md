@@ -5,12 +5,20 @@ Biblioteca aberta do grupo de estudos: PDFs e EPUBs de tecnologia, com busca, fi
 ## Estrutura
 
 ```
-index.html      → o site (não precisa mexer)
-catalogo.json   → a lista de materiais (é aqui que vocês editam)
-livros/         → os arquivos PDF e EPUB
+index.html         → o site (não precisa mexer)
+livros/            → os arquivos PDF e EPUB (subpastas = matérias)
+livros/capas/      → capas opcionais
+catalogo.json      → detalhes opcionais (autor, descrição) e os livros com link externo
+gerar-catalogo.js  → monta o catálogo e as capas automaticamente (a Vercel roda sozinha)
+package.json       → bibliotecas usadas para gerar as capas
+vercel.json        → configuração da Vercel
 ```
 
-## Publicar no GitHub Pages (grátis)
+## Publicar (Vercel)
+
+O site está na Vercel, ligada a este repositório. Qualquer commit atualiza o site em menos de um minuto.
+
+## Publicar no GitHub Pages (alternativa)
 
 1. Crie um repositório público no GitHub chamado `deploy-book`.
 2. Envie estes arquivos para ele (botão **Add file → Upload files**).
@@ -19,33 +27,32 @@ livros/         → os arquivos PDF e EPUB
 
 ## Adicionar um material
 
-1. Suba o arquivo para a pasta `livros/` (ex.: `livros/redes-osi.pdf`).
-2. Adicione um item em `catalogo.json`:
+**Jeito rápido:** suba o PDF ou EPUB para a pasta `livros/`. Pronto, a Vercel atualiza o site sozinha.
+
+- **Matéria:** use subpastas. `livros/Docker/meu-livro.pdf` entra na matéria "Docker". Arquivos soltos em `livros/` entram em "Geral".
+- **Título:** vem do nome do arquivo. `guia-de-redes-no-docker.pdf` vira "Guia de Redes no Docker".
+- **PDF e EPUB do mesmo livro:** dê o mesmo nome aos dois, e eles viram um livro só.
+- **Capa:** automática (primeira página do PDF ou capa do EPUB). Para escolher outra, suba uma imagem com o mesmo nome em `livros/capas/` (ex.: `livros/capas/guia-de-redes-no-docker.jpg`).
+
+**Jeito detalhado (opcional):** para colocar autor, descrição ou outro título, adicione um item em `catalogo.json` apontando para o arquivo:
 
 ```json
 {
-  "id": "redes-osi",
-  "titulo": "Resumo de Redes: Modelo OSI",
-  "autor": "Grupo Deploy-Book",
-  "materia": "Redes",
-  "idioma": "PT-BR",
-  "licenca": "CC BY 4.0",
-  "descricao": "As 7 camadas com exemplos.",
-  "capa": "livros/capas/redes-osi.jpg",
+  "id": "guia-redes-docker",
+  "titulo": "Guia de Redes no Docker",
+  "autor": "Fulana de Tal",
+  "materia": "Docker",
+  "descricao": "Bridge, host, overlay e DNS entre containers.",
   "arquivos": [
-    { "formato": "pdf",  "url": "livros/redes-osi.pdf" },
-    { "formato": "epub", "url": "livros/redes-osi.epub" }
+    { "formato": "pdf", "url": "livros/Docker/guia-de-redes-no-docker.pdf" }
   ]
 }
 ```
 
-- `id` precisa ser único, sem espaços.
-- `capa` é opcional. Coloque a imagem em `livros/capas/` (JPG ou PNG, de preferência em pé, proporção 2:3).
-  Sem `capa`, o site tira a capa do próprio arquivo: a capa do EPUB ou a primeira página do PDF.
-  Se não houver arquivo, ele monta uma capa com o título, o autor e a cor da matéria.
-- `materia` cria o filtro automaticamente; use sempre o mesmo nome.
-- Para livros abertos de terceiros, prefira `"fonte": "https://pagina-oficial"` em vez de subir o arquivo.
-- EPUBs dentro de `livros/` ganham o botão **Ler EPUB aqui**.
+O que estiver no `catalogo.json` tem prioridade sobre o automático.
+
+**Como funciona por dentro:** a cada commit, a Vercel roda `gerar-catalogo.js` (configurado em `vercel.json`),
+que lê a pasta `livros/` e o `catalogo.json`, cria as capas que faltam e monta a pasta `site/`, que é o que vai ao ar.
 
 ## Limites
 

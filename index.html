@@ -194,7 +194,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 
   async function carregar(){
     try{
-      const r=await fetch("catalogo.json",{cache:"no-store"});
+      let r=await fetch("catalogo-site.json",{cache:"no-store"});
+      if(!r.ok) r=await fetch("catalogo.json",{cache:"no-store"});
       if(!r.ok) throw new Error(r.status);
       const data=await r.json();
       iniciar(data);
@@ -259,9 +260,9 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
         ${capaHTML(it)}
         <div style="min-width:0">
           <h3>${esc(it.titulo)}</h3>
-          <div class="meta">${esc(it.autor)} · ${esc(it.materia)}${it.idioma?" · "+esc(it.idioma):""}</div>
-          <p class="desc">${esc(it.descricao)}</p>
-          <div class="tags">${formatsOf(it).map(f=>`<span class="tag fmt">${esc(f)}</span>`).join("")}<span class="tag lic">${esc(it.licenca)}</span></div>
+          <div class="meta">${[it.autor,it.materia,it.idioma].filter(Boolean).map(esc).join(" · ")}</div>
+          ${it.descricao?`<p class="desc">${esc(it.descricao)}</p>`:""}
+          <div class="tags" style="margin-top:10px">${formatsOf(it).map(f=>`<span class="tag fmt">${esc(f)}</span>`).join("")}${it.licenca?`<span class="tag lic">${esc(it.licenca)}</span>`:""}</div>
         </div>
         <div class="acts">${acts.join("")}</div>
       </article>`;
@@ -341,7 +342,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     const res=state.itens.filter(it=>norm([it.titulo,it.autor,it.materia,it.descricao].join(" ")).includes(q));
     suggIdx=-1;
     box.innerHTML=res.length
-      ? res.slice(0,6).map(it=>`<button type="button" role="option" data-id="${esc(it.id)}">${capaHTML(it)}<span style="min-width:0"><strong>${realce(it.titulo,q)}</strong><span class="m">${realce(it.autor,q)} · ${esc(it.materia)}</span></span></button>`).join("")
+      ? res.slice(0,6).map(it=>`<button type="button" role="option" data-id="${esc(it.id)}">${capaHTML(it)}<span style="min-width:0"><strong>${realce(it.titulo,q)}</strong><span class="m">${it.autor?realce(it.autor,q)+" · ":""}${esc(it.materia)}</span></span></button>`).join("")
         +(res.length>6?`<span class="all">+ ${res.length-6} na lista abaixo</span>`:"")
       : `<div class="none">Nada encontrado para “${esc(state.q.trim())}”.</div>`;
     box.hidden=false;$("q").setAttribute("aria-expanded","true");
