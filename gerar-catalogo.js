@@ -149,7 +149,8 @@ async function gerarCapas(lista) {
   for (const it of lista) {
     if (it.capa) continue;
     const locais = (it.arquivos || []).filter(a => !/^[a-z]+:\/\//i.test(a.url));
-    const ordem = [...locais.filter(a => /epub/i.test(a.formato)), ...locais.filter(a => /pdf/i.test(a.formato))];
+    // PDF primeiro: a capa do PDF tem prioridade; o EPUB só é usado quando não há PDF
+    const ordem = [...locais.filter(a => /pdf/i.test(a.formato)), ...locais.filter(a => /epub/i.test(a.formato))];
     for (const a of ordem) {
       const arquivo = path.join(RAIZ, ...decodeURIComponent(a.url).split("/"));
       if (!fs.existsSync(arquivo)) continue;
